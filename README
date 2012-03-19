@@ -7,11 +7,10 @@ This project is the code associated with the application of idempotent/COD-free 
 from an extension of the paper:   http://arxiv.org/abs/1203.2846
 and is on going research work. The research article for which this code is being created will be uploaded in the next few weeks. 
 
-The project in its current form fits a specfic output function x^3/40. Although the theory is valid for 
-a large class of funcitons, the fitting routines in the implementaiton are for a specific case.  Future extensions would generalize this.  
-It is meant to demonstrate the application of the theory to a particular nonlinear example (albeit in a form where
-the codebase can be reused easily).  
-
+The project in its current form  is meant to demonstrate the application of the theory to a particular nonlinear example (albeit in a form where
+the codebase can be reused easily).   It uses a specfic output function x^3/40. Although the theory is valid for 
+a large class of functions, the fitting routines in the implementaiton are for a specific system.  Future extensions would generalize this, by
+enabling a user to specify their own system and output functions. Note that at present the system dynamics can be changed. 
 
 Note: The code listing has a non-optimal formatting on github. It was 
 coded in vim and using vim and code folding modes would be clearer in helping to see the general flow of the algorithm.
@@ -30,7 +29,7 @@ A description of the files in this project is as follows
 The main places where future development would require altering this code are :
 
 - the mainFile:  for different systems , the parameters that could be changed are:
-			- system dynamics 
+			- system dynamics: (currently uses linear systems ... can be generalized, the theory is in place  on how to do this).
 			- output function (changes to this would also require changes to the fitting routines)
 			- time step for the simulation, and total time.
 			- discretization approach from converting the  continuous system to discrete form for the given time step.
