@@ -88,8 +88,8 @@ function  mainFile
 
 	% now plot the results and save them to file 
 		t = 0:dt:stopTime-dt;
-		fileNameForStatePlot = 'Stateplot5';
-		fileNameForMeasurementPlot = 'MeasurementPlot5';
+		fileNameForStatePlot = 'Stateplot8';
+		fileNameForMeasurementPlot = 'MeasurementPlot8';
 		helperPlotFns(t, xtrue,xhatvec,ytrue,fileNameForStatePlot,fileNameForMeasurementPlot);
 
 
