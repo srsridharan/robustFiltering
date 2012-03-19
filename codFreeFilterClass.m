@@ -6,7 +6,7 @@ classdef (ConstructOnLoad=false) codFreeFilterClass
 	%% the values below are simply initalizations.. they are never used since they are replaced in the constructor 
 	% function	below 
 
-		limitOnNumberOfQua dratics = 20; 
+		limitOnNumberOfQuadratics = 20; 
 		QuadraticStored = [];
 		systemSpecificParam = {};	 % next ver:  can change this to be an object of the system class
 		stateEstimate = [];
@@ -28,22 +28,29 @@ classdef (ConstructOnLoad=false) codFreeFilterClass
 		% the class members
 		
 		
-		errorIDforThisFunction = 'robustFilteringCODfree:constructor:';	
-
+		errorIDforThisFunction = 'robustFilteringCODfree:constructor';	
+%         keyboard;
 		% argument number check
-			narginchk(7,7);
+        try
+            error(nargchk(8, 8, nargin,'struct'))
+        catch excep1
+            exception2 = MException(errorIDforThisFunction, 'incorrect number of inputs to constructor' );
+			excep2 = addCause(excep1,exception2); 
+			throw(excep2);
+        end
+			
 		
 		% check for empty arguments	
 			argList = {'systemSpecificParam','filterWeightOnMeasNoise','filterWeightOnDynNoise',' filterWeightOnState',...
 											'initialStateEstimate','initialStateCovarEstimate',' initialQuadratic','outputFnToFit'};	
-			emptyChecker = cell2mat(cellfun(@(x)isempty(x),{systemSpecificParam,filterWeightOnMeasNoise,filterWeightOnDynNoise, filterWeightOnState,...
-											initialStateEstimate,initialStateCovarEstimate, initialQuadratic,outputFnToFit},'UniformOutput','true'));
+			emptyChecker = cellfun(@(x)isempty(x),{systemSpecificParam,filterWeightOnMeasNoise,filterWeightOnDynNoise, filterWeightOnState,...
+											initialStateEstimate,initialStateCovarEstimate, initialQuadratic,outputFnToFit},'UniformOutput',1);
 			assert(~sum(emptyChecker),['empty argument(s): ', argList(logical(emptyChecker))]);
 				
 			
 
 		% now initialize the arguments
-				obj.sy stemSpecificParam = systemSpecificParam; % these contain the sys dynamics.
+				obj.systemSpecificParam = systemSpecificParam; % these contain the sys dynamics.
 				obj.filterWeightOnMeasNoise =  filterWeightOnMeasNoise;
 				obj.filterWeightOnDynNoise = filterWeightOnDynNoise;
 				obj.filterWeightOnState =  filterWeightOnState;
@@ -52,9 +59,9 @@ classdef (ConstructOnLoad=false) codFreeFilterClass
 				obj.QuadraticStored{1} = initialQuadratic;
 				obj.currentNumberOfQuadratics = 1;
 				obj.outputFnToFit = outputFnToFit;
-				obj.currentApproxToOutputPositive =[]; 
-				obj.currentApproxToOutputNegative = [];
-				obj.currentApproxToOutputSquared = [];
+				obj.currentApproxToOutputPositive = nan; 
+				obj.currentApproxToOutputNegative = nan;
+				obj.currentApproxToOutputSquared = nan;
 
   end % of constructor codFreeFilterClass
 
@@ -250,7 +257,7 @@ classdef (ConstructOnLoad=false) codFreeFilterClass
 			 
 			% now for each cluster find and retain the quadratic with the lowest value
 				for(klusterindxCounter = 1:numberOfQuadraticsToBeKept)
-						rowselect= find(clusteridx = = klusterindxCounter);
+						rowselect= find(clusteridx == klusterindxCounter);
 						[val,indxsort] = sort(cell2mat(minval(rowselect)));
 						indxOfQuadraticsToKeep(klusterindxCounter) = rowselect(indxsort(1));
 				end
