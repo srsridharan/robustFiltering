@@ -282,7 +282,7 @@ classdef (ConstructOnLoad=false) codFreeFilterClass
 			fntofit =@(x) obj.outputFnToFit(x).^2 ; %  (x.^3/40).^2;
 			obj.currentApproxToOutputSquared = fitForFnSq(fntofit, xhat, numberOfQuadratics, numOfPtsAroundEachQuadratic, rangeAroundXhat );
 
-	end % of funciton generate_quadapprox_script
+	end % of function generate_quadapprox_script
 		
 	end % of methods 
 		
@@ -296,7 +296,8 @@ end % end of class def
 function [minval,stateest]= helpergenerateMinimaAndCorrespondingStateEst(Q)
 		% this function generates the minima of the quadratic (having a kernal Q) and the corresponding state 
 		% xhatmin. The value of the quadratic form for any state xhatmin is [xhatmin;1]'*Q*[xhatmin;1]
-      q11 = Q(1:end-1,1:end-1);
+		
+			q11 = Q(1:end-1,1:end-1);
 			q21=Q(end,1:end-1);
 			q12 = Q(1:end-1,end);
 			q22 = Q(end,end);
