@@ -6,6 +6,8 @@ function quadcell = fitForFnSq(fntofit, xhat, numberOfQuadratics, numOfPtsAround
 %% Note that the beginning guess in the fmincon function is obtained analytically **FOR THE CURRENT FUNCTION OF INTEREST**. 
 % This can be changed for other functions of interest.
 
+%% Approach: minimize the difference between the quadratic curve and the function value while ensuring that the quadratic stays above 
+% the function being fitted. This is one of the direct routes to obtain a minplus expansion (albeit not necessarily the most efficient one).
 
 	opt1= optimset('Display','off');% it speeds up the run if messages arent being printed out. Comment this line during debugging		
 	quadcell = {};
