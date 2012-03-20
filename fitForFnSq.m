@@ -3,6 +3,9 @@ function quadcell = fitForFnSq(fntofit, xhat, numberOfQuadratics, numOfPtsAround
 % nonlinear constrained optimization on a grid of numOfPtsAroundEachQuadratic  around the center point of each
 % quadratic. The centerpoints of each quadratic are chosen by linearly choosing points in a window zone (rangeAroundXhat) 
 % about  xhat. 
+%% Note that the beginning guess in the fmincon function is obtained analytically **FOR THE CURRENT FUNCTION OF INTEREST**. 
+% This can be changed for other functions of interest.
+
 
 	opt1= optimset('Display','off');% it speeds up the run if messages arent being printed out. Comment this line during debugging		
 	quadcell = {};

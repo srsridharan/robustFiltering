@@ -3,6 +3,8 @@ function quadcell = fitForFn(fntofit, xhat, numberOfQuadratics, numOfPtsAroundEa
 % nonlinear constrained optimization on a grid of numOfPtsAroundEachQuadratic  around the center point of each
 % quadratic. The centerpoints of each quadratic are chosen by linearly choosing points in a window zone (rangeAroundXhat) 
 % about  xhat. 
+%% Note that the beginning guess in the fmincon function is obtained analytically **FOR THE CURRENT FUNCTION OF INTEREST**. 
+% This can be changed for other functions of interest.
 
   xhat = xhat(2); % in the example used only the 2nd state influences the output directly (since y = ((x_2) ^3)/40
 	opt1= optimset('Display','off'); % it speeds up the run if messages arent being printed out. Comment this line during debugging	
