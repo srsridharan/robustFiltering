@@ -8,9 +8,10 @@ from an extension of the paper:   http://arxiv.org/abs/1203.2846
 and is on going research work. The research article for which this code is being created will be uploaded in the next few weeks. 
 
 The project in its current form  is meant to demonstrate the application of the theory to a particular nonlinear example (albeit in a form where
-the codebase can be reused easily).   It uses a specfic output function x^3/40. Although the theory is valid for 
-a large class of functions, the fitting routines in the implementaiton are for a specific system.  Future extensions would generalize this, by
-enabling a user to specify their own system and output functions. Note that at present the system dynamics can be changed. 
+the codebase can be reused easily).   It uses a specific output function x^3/40. Although the theory is valid for 
+a large class of functions, the fitting routines in the implementation are for a specific system.  Future extensions would generalize this, by
+enabling a user to specify their own system and output functions. Note that at present the system dynamics can be changed but must be linear.  This restriction can be removed by suitable modifications (and the underlying 
+theory is in place on how to do this, ref paper above). 
 
 Note: The code listing has a non-optimal formatting on github. It was 
 coded in vim and using vim and code folding modes would be clearer in helping to see the general flow of the algorithm.
