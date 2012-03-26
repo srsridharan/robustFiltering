@@ -37,7 +37,6 @@ The main places where future development would require altering this code are :
 			- filename management for storing plots/ information regarding them.
 
 - fitting routines: These contain initial guesses to the quadratic forms used to fit the measurement function. 
-	Currently these guesses are based on the form of the output. These would be made more general to accomodate
-	general output functions. 
+	Currently these guesses are based on the form of the output. These would be made more general to accomodate general output functions. 
 	
 
