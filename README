@@ -28,14 +28,16 @@ modify either of these files.
 The main places where future development would require altering this code are :
 
 - the mainFile:  for different systems , the parameters that could be changed are:
-	- system dynamics: (currently uses linear systems ... can be generalized, the theory is in place  on how 
-  	to do this).
-	- output function (changes to this would also require changes to the fitting routines)
+	- system dynamics: (currently uses linear systems ... can be generalized, 
+	the theory is in place  on how to do this).
+	- output function (changes to this would also require changes to the 
+		fitting routines)
 	- time step for the simulation, and total time.
-	- discretization approach from converting the  continuous system to discrete form for the given time step.
+	- discretization approach from converting the  continuous system to 
+		discrete form for the given time step.
 	- filename management for storing plots/ information regarding them.
 
-- fitting routines: These contain initial guesses to the quadratic forms used to fit the measurement function. 
-	Currently these guesses are based on the form of the output. These would be made more general to accomodate general output functions. 
+- fitting routines: These contain initial guesses to the quadratic forms used to fit the measurement function. Currently these guesses are based 
+on the form of the output.  These would be made more general to accomodate general output functions. 
 	
 
