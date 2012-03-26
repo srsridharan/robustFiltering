@@ -1,14 +1,16 @@
 %%% README %%%%
 
-This project is the code associated with the application of idempotent/COD-free methods to robust filtering.  and is on going research work. The research article for which this code is being created  is:
+This repository contains the code associated with the application of idempotent/COD-free methods to robust filtering
+The research article corresponding to this code is: 
 http://arxiv.org/abs/1203.5289
 
 The project in its current form  is meant to demonstrate the application of curse of dimensionality free methods 
-to a particular nonlinear example (albeit in a form where
-the codebase can be reused easily).   It uses a specific output function x^3/40. Although the theory is valid for 
-a large class of functions, the fitting routines in the implementation are for a specific system.  Future extensions would generalize this, by
-enabling a user to specify their own system and output functions. Note that at present the system dynamics can be changed but must be linear.  This restriction can be removed by suitable modifications (and the underlying 
-theory is in place on how to do this, ref paper above). 
+to a particular nonlinear example (albeit in a form where the codebase can be reused easily).   It uses
+a specific output function x^3/40. Although the theory is valid for  a large class of functions, the
+fitting routines in the implementation are for a specific system.  Future extensions 
+would generalize this, by enabling a user to specify their own system and output functions. Note that at present
+the system dynamics can be changed but must be linear.  This restriction can be removed by suitable 
+modifications (and the underlying  theory is in place on how to do this, ref paper above). 
 
 Note: The code listing has a non-optimal formatting on github. It was 
 coded in vim and using vim and code folding modes would be clearer in helping to see the general flow of the algorithm.
@@ -18,22 +20,24 @@ coded in vim and using vim and code folding modes would be clearer in helping to
 A description of the files in this project is as follows
 
 - codFreeFilterClass: this is the constructor for the robust filter.  Users will not have to modify this file.
-- fitForFn, fitForFnSq: these functions generate min-plus quadratic expansions for the output function and its square respectively.
-	Users would not have to modify either of these files.
-- mainFile: this is the file to run in order to observe the results of filtering on the system with the nonlinear output function
-	(x^3/40)
+- fitForFn, fitForFnSq: these functions generate min-plus quadratic expansions for the output function and
+	its square respectively. Users would not have to modify either of these files.
+- mainFile: this is the file to run in order to observe the results of filtering on the system with the
+	nonlinear output function (x^3/40)
 
 ! To  make changes:
 The main places where future development would require altering this code are :
 
 - the mainFile:  for different systems , the parameters that could be changed are:
-			- system dynamics: (currently uses linear systems ... can be generalized, the theory is in place  on how to do this).
+			- system dynamics: (currently uses linear systems ... can be generalized, the theory is in place  on how 
+				to do this).
 			- output function (changes to this would also require changes to the fitting routines)
 			- time step for the simulation, and total time.
 			- discretization approach from converting the  continuous system to discrete form for the given time step.
 			- filename management for storing plots/ information regarding them.
 
 - fitting routines: These contain initial guesses to the quadratic forms used to fit the measurement function. 
-	Currently these guesses are based on the form of the output. These would be made more general to accomodate general output functions. 
+	Currently these guesses are based on the form of the output. These would be made more general to accomodate
+	general output functions. 
 	
 
